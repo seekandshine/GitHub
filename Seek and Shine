@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seek & Shine - Handmade Jewelry & Accessories</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f9e4e4, #fdf7e3, #dbe7f6);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #f8d7da;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #d38b8b;
+            animation: float 3s ease-in-out infinite, highlight 1.5s infinite alternate;
+            margin-left: 20px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes highlight {
+            0% { text-shadow: 0 0 5px rgba(211, 139, 139, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(211, 139, 139, 1); }
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #8b5e83;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            transition: opacity 0.5s ease-in-out;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .hero.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .hero h2, .hero p {
+            font-size: 40px;
+            background: linear-gradient(to right, #a2d2ff, #ffafcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .btn {
+            background-color: #d4a5a5;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Explore Collections */
+        .explore {
+            text-align: center;
+            padding: 50px 20px;
+            perspective: 1000px;
+            margin-top: 60vh;
+        }
+
+        .explore .box {
+            width: 300px;
+            height: 200px;
+            background: #f8d7da;
+            display: inline-block;
+            margin: 20px;
+            transform: rotateY(10deg);
+            transition: transform 0.5s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .explore .box:hover {
+            transform: rotateY(0deg) scale(1.1);
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .contact h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact a {
+            color: #8b5e83;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8d7da;
+        }
+    </style>
+    <script>
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", function() {
+            let hero = document.querySelector(".hero");
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScroll > lastScrollTop) {
+                hero.classList.add("hide");
+            } else {
+                hero.classList.remove("hide");
+            }
+            lastScrollTop = currentScroll;
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Seek & Shine</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Handcrafted Jewelry & Accessories</h2>
+            <p>Elegant, timeless, and uniquely handmade just for you.</p>
+            <a href="#products" class="btn">Explore Collection</a>
+        </div>
+    </section>
+    
+    <section class="explore">
+        <h2>Explore Collections</h2>
+        <div class="box">Necklaces</div>
+        <div class="box">Bracelets</div>
+        <div class="box">Keychains</div>
+        <div class="box">Candles</div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Have any questions? Reach out to us at <a href="mailto:seekandshine.in@gmail.com">seekandshine.in@gmail.com</a></p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Seek & Shine. All rights reserved.</p>
+    </footer>
+</body>
+</html>
